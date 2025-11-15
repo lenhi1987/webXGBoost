@@ -1,0 +1,27 @@
+File .gitignore để loại trừ file không cần đưa lên Git/Gist.
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+*.env
+
+# Flask uploads
+static/uploads/
+
+# Models
+models/*.pkl
+
+# Database
+database/*.db
+
+# IDE
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db
