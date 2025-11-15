@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="mb-3">Tin mới</h2>
+
+<form class="d-flex mb-3" role="search" action="{{ url_for('search') }}">
+    <input class="form-control me-2" type="search" placeholder="Tìm bài viết..." aria-label="Search" name="q">
+    <button class="btn btn-outline-success" type="submit">Tìm</button>
+</form>
+
+<ul class="list-group">
+    {% for post in posts %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+            <a href="{{ url_for('view', id=post.id) }}"><strong>{{ post.title }}</strong></a>
+            {% if post.category %}
+            <span class="badge bg-secondary ms-2">{{ post.category }}</span>
+            {% endif %}
+        </div>
+        <div>
+            <a href="{{ url_for('edit', id=post.id) }}" class="btn btn-sm btn-warning">Sửa</a>
+            {% if session.get('role') == 'admin' %}
+            <form action="{{ url_for('delete', id=post.id) }}" method="POST" style="display:inline;">
+                <button class="btn btn-sm btn-danger" onclick="return confirm('Xác nhận xóa?')">Xóa</button>
+            </form>
+            {% endif %}
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
