@@ -1,0 +1,23 @@
+/* File CSS cơ bản cho toàn bộ website. */
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#editor {
+    background-color: white;
+}
+
+footer {
+    margin-top: 50px;
+}
