@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Dashboard ML</h2>
+
+<canvas id="predChart" width="800" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('predChart').getContext('2d');
+const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ dates|tojson }},
+        datasets: [
+            {
+                label: 'Số dự đoán',
+                data: {{ counts|tojson }},
+                borderColor: 'rgba(54, 162, 235, 1)',
+                yAxisID: 'y',
+            },
+            {
+                label: 'Giá trị trung bình',
+                data: {{ avgs|tojson }},
+                borderColor: 'rgba(255, 99, 132, 1)',
+                yAxisID: 'y1',
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        interaction: {
+            mode: 'index',
+            intersect: false,
+        },
+        stacked: false,
+        scales: {
+            y: {
+                type: 'linear',
+                position: 'left',
+                title: { display: true, text: 'Số lượng' }
+            },
+            y1: {
+                type: 'linear',
+                position: 'right',
+                title: { display: true, text: 'Giá trị trung bình' },
+                grid: { drawOnChartArea: false }
+            }
+        }
+    }
+});
+</script>
+
+{% endblock %}
