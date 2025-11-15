@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>{{ post.title }}</h2>
+
+<p>
+    <small>
+        Danh mục: {{ post.category }} | 
+        Ngày tạo: {{ post.created_at.strftime('%Y-%m-%d %H:%M') }}
+    </small>
+</p>
+
+{% if post.image_url %}
+<img src="{{ post.image_url }}" class="img-fluid mb-3">
+{% endif %}
+
+<div>
+    {{ post.content|safe }}
+</div>
+
+<a href="{{ url_for('edit', id=post.id) }}" class="btn btn-warning mt-3">Chỉnh sửa</a>
+
+{% endblock %}
