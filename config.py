@@ -1,3 +1,15 @@
+# File cấu hình chính của toàn hệ thống, dùng cho:
+
+# Kết nối PostgreSQL
+
+# Secret key Flask
+
+# Upload ảnh
+
+# Cấu hình mô hình ML
+
+# Bạn copy nội dung dưới đây vào file config.py.
+
 import os
 
 # -------------------------------
